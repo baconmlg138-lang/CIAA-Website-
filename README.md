@@ -37,8 +37,37 @@ npm install
 npm run dev
 ```
 
-## Customize
+## Contact form → Google Sheet
 
-- Copy and offerings: `src/data/content.ts`
-- Visual system: `src/styles/global.css`
-- Photos: `public/images/`
+Submissions are written to a **private** Google Sheet through an Apps Script web app. The spreadsheet itself is never public.
+
+### One-time setup
+
+1. Create a Google Sheet owned by a CIAA admin account.
+2. **Share → Restricted** (only specific people). Do **not** use “Anyone with the link”.
+3. Open **Extensions → Apps Script**, paste `scripts/google-apps-script/Code.gs`, save.
+4. In Apps Script: **Project Settings → Script properties** add:
+   - `SHARED_SECRET` = a long random string (password manager can generate one)
+   - `SHEET_NAME` = `Submissions` (optional)
+5. **Deploy → New deployment → Web app**
+   - Execute as: **Me**
+   - Who has access: **Anyone** (needed so the website can POST; the *sheet* stays private)
+6. Copy `.env.example` to `.env` and fill in:
+   - `VITE_CONTACT_FORM_URL` = the web app URL
+   - `VITE_CONTACT_FORM_SECRET` = the same `SHARED_SECRET`
+7. Restart `npm run dev`.
+
+Rows appear on the `Submissions` tab: Timestamp, Name, Email, Interest, Message, Status.
+
+### Protecting user data
+
+| Control | What it does |
+|---|---|
+| Restricted sheet sharing | Only named CIAA accounts can open the data |
+| Script “Execute as Me” | Website never gets a Google login or sheet ID |
+| Field validation + allowlist | Rejects junk / oversized payloads server-side |
+| Honeypot field | Drops simple bot spam |
+| Rate limit | Caps writes per minute in Apps Script |
+| `.env` gitignored | Keeps local secrets out of git |
+
+**Important:** Vite `VITE_*` values are visible in the built frontend. Treat `SHARED_SECRET` as an anti-spam token, not a vault password. Real confidentiality comes from **who can open the Google Sheet** (Restricted + 2FA on those Google accounts). For stricter needs later (secret never in the browser), add a tiny server/proxy or move to Supabase with server-side keys.

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { brand, footerColumns, mission } from '../../data/content'
 
 export default function Footer() {
@@ -19,7 +20,11 @@ export default function Footer() {
               <ul>
                 {column.links.map((link) => (
                   <li key={link.label}>
-                    <a href={link.href}>{link.label}</a>
+                    {link.href.startsWith('mailto:') ? (
+                      <a href={link.href}>{link.label}</a>
+                    ) : (
+                      <Link to={link.href}>{link.label}</Link>
+                    )}
                   </li>
                 ))}
               </ul>

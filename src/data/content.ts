@@ -6,11 +6,11 @@ export const brand = {
 }
 
 export const navLinks = [
-  { label: 'Who We Are', href: '#who' },
-  { label: 'What We Do', href: '#what-we-do' },
-  { label: 'Programs', href: '#programs' },
-  { label: 'Events', href: '#events' },
-  { label: 'Get Connected', href: '#connect' },
+  { label: 'Who We Are', href: '/who-we-are' },
+  { label: 'What We Do', href: '/what-we-do' },
+  { label: 'Programs', href: '/programs' },
+  { label: 'Events', href: '/events' },
+  { label: 'Get Connected', href: '/connect' },
 ]
 
 export const heroSlides = [
@@ -22,8 +22,8 @@ export const heroSlides = [
     support:
       'Mentorship, heavenly culture, and high-energy training — so curiosity turns into commitment.',
     image: '/images/programs/community.jpg',
-    primary: { label: 'See programs', href: '#programs' },
-    secondary: { label: 'Get connected', href: '#connect' },
+    primary: { label: 'See programs', href: '/programs' },
+    secondary: { label: 'Get connected', href: '/connect' },
     theme: 'dark' as const,
   },
   {
@@ -33,9 +33,10 @@ export const heroSlides = [
     headline: 'Word first. Then the game.',
     support:
       'Bible-centered sessions that strengthen identity, purpose, and performance under pressure.',
-    image: '/images/programs/seminar.jpg',
-    primary: { label: 'Learn more', href: '#programs' },
-    secondary: { label: 'Join a camp', href: '#events' },
+    image: '/images/programs/hero-seminar-room.jpg',
+    imagePosition: 'center 28%',
+    primary: { label: 'Learn more', href: '/programs' },
+    secondary: { label: 'Join a camp', href: '/events' },
     theme: 'dark' as const,
   },
   {
@@ -45,9 +46,9 @@ export const heroSlides = [
     headline: 'High intensity. Heavenly culture.',
     support:
       'Basketball, soccer, track, and more — competition that heals culture instead of burning athletes out.',
-    image: '/images/programs/basketball.jpg',
-    primary: { label: 'See sports', href: '#events' },
-    secondary: { label: 'Get involved', href: '#connect' },
+    image: '/images/programs/hero-basketball.jpg',
+    primary: { label: 'See sports', href: '/events' },
+    secondary: { label: 'Get involved', href: '/connect' },
     theme: 'dark' as const,
   },
 ]
@@ -67,28 +68,28 @@ export const passionCards = [
     blurb: 'Basketball, soccer, track, and more — compete with purpose, not just pressure.',
     image: '/images/programs/basketball.jpg',
     cta: 'Learn more',
-    href: '#events',
+    href: '/events',
   },
   {
     title: 'Faith Training Camp',
     blurb: 'Word-focused Bible study that builds athletes from the inside out.',
-    image: '/images/programs/seminar.jpg',
+    image: '/images/programs/who-we-are.jpg',
     cta: 'Learn more',
-    href: '#programs',
+    href: '/programs',
   },
   {
     title: '1-on-1 Bible Coaching',
     blurb: 'Personal mentorship for athletes ready to grow in faith and game.',
     image: '/images/programs/mentorship.jpg',
     cta: 'Get coached',
-    href: '#connect',
+    href: '/connect',
   },
   {
     title: 'Fellowships & Sports Days',
     blurb: 'High-energy gatherings that unite athletes in community and heavenly culture.',
     image: '/images/programs/community.jpg',
     cta: 'Join in',
-    href: '#events',
+    href: '/events',
   },
 ]
 
@@ -120,55 +121,30 @@ export const fiveWays = [
   },
 ]
 
-export const connectChannels = [
-  {
-    title: 'Contact Form',
-    detail: 'Tell us what you’re interested in — a team leader will follow up.',
-    href: '#connect-form',
-    action: 'Fill out form',
-  },
-  {
-    title: 'Email Us',
-    detail: 'Reach the team directly with questions or partnership ideas.',
-    href: 'mailto:hello@ciaa.atlanta',
-    action: 'Send email',
-  },
-  {
-    title: 'Instagram',
-    detail: 'See the energy day to day and stay in the loop.',
-    href: 'https://www.instagram.com/',
-    action: 'Follow along',
-  },
-]
-
 export const events = [
   {
     date: 'Aug 16',
     title: 'Sports Day — Atlanta',
     detail: 'Open competition, fellowship, and heavenly culture on the field.',
     tag: 'Competition',
-    image: '/images/gallery/flag-football.jpg',
   },
   {
     date: 'Aug 23',
     title: 'Faith Training Camp',
     detail: 'Word-focused sessions for athletes building a foundation that lasts.',
     tag: 'Training',
-    image: '/images/programs/seminar.jpg',
   },
   {
     date: 'Sep 6',
     title: 'Special Training Clinic',
     detail: 'Skill work, mentorship huddles, and game-day intensity.',
     tag: 'Clinic',
-    image: '/images/programs/training.jpg',
   },
   {
     date: 'Sep 20',
     title: 'Fellowship Night',
     detail: 'Community, encouragement, and connection for athletes and friends.',
     tag: 'Fellowship',
-    image: '/images/gallery/team.jpg',
   },
 ]
 
@@ -192,22 +168,19 @@ export const involve = [
     title: 'Join a Training',
     body: 'Show up to sports days, camps, and special sessions across Atlanta.',
     action: 'See events',
-    href: '#events',
-    image: '/images/gallery/intensity.jpg',
+    href: '/events',
   },
   {
     title: 'Shadow the Ministry',
     body: 'Sign up for the shadowing program and learn how CIAA moves day to day.',
     action: 'Apply to shadow',
-    href: '#connect',
-    image: '/images/gallery/leaders.jpg',
+    href: '/connect#connect-form',
   },
   {
     title: 'Serve on the Team',
     body: 'Help with Culture & Promo, Administration, or Athlete Evangelism.',
     action: 'Get connected',
-    href: '#connect',
-    image: '/images/gallery/cheering.jpg',
+    href: '/connect#connect-form',
   },
 ]
 
@@ -250,36 +223,36 @@ export const footerColumns = [
   {
     title: 'Explore',
     links: [
-      { label: 'Who We Are', href: '#who' },
-      { label: 'What We Do', href: '#what-we-do' },
-      { label: 'Programs', href: '#programs' },
-      { label: 'Events', href: '#events' },
+      { label: 'Who We Are', href: '/who-we-are' },
+      { label: 'What We Do', href: '/what-we-do' },
+      { label: 'Programs', href: '/programs' },
+      { label: 'Events', href: '/events' },
     ],
   },
   {
     title: 'What We Do',
     links: [
-      { label: 'Athlete Mentorship', href: '#what-we-do' },
-      { label: 'Heavenly Culture', href: '#what-we-do' },
-      { label: 'Bible Studies', href: '#what-we-do' },
-      { label: 'Outreach', href: '#what-we-do' },
+      { label: 'Athlete Mentorship', href: '/what-we-do' },
+      { label: 'Heavenly Culture', href: '/what-we-do' },
+      { label: 'Bible Studies', href: '/what-we-do' },
+      { label: 'Outreach', href: '/what-we-do' },
     ],
   },
   {
     title: 'Get Connected',
     links: [
-      { label: 'Contact form', href: '#connect-form' },
-      { label: 'Join a training', href: '#events' },
-      { label: 'Serve on the team', href: '#connect' },
+      { label: 'Contact form', href: '/connect#connect-form' },
+      { label: 'Join a training', href: '/events' },
+      { label: 'Serve on the team', href: '/connect' },
       { label: 'Email us', href: 'mailto:hello@ciaa.atlanta' },
     ],
   },
   {
     title: 'About',
     links: [
-      { label: brand.ministry, href: '#who' },
-      { label: brand.location, href: '#connect' },
-      { label: 'Mission', href: '#who' },
+      { label: brand.ministry, href: '/who-we-are' },
+      { label: brand.location, href: '/connect' },
+      { label: 'Mission', href: '/who-we-are' },
     ],
   },
 ]

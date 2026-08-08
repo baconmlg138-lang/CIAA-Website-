@@ -7,8 +7,8 @@ export default function Gallery() {
       id="stories"
       title="Explore the stories"
       subtitle="From the field to the huddle — this is what it looks like when athletes chase more."
-      learnMoreHref="#connect"
-      viewAllHref="#connect"
+      learnMoreHref="/connect"
+      viewAllHref="/connect"
     >
       {gallery.map((item) => (
         <figure className="story-card" key={item.src}>

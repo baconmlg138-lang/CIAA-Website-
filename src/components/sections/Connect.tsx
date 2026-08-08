@@ -1,66 +1,88 @@
-import { useState, type FormEvent } from 'react'
-import { brand, connectChannels } from '../../data/content'
+import { useRef } from 'react'
+import { Link } from 'react-router-dom'
+import { brand, events, involve } from '../../data/content'
 
 export default function Connect() {
-  const [sent, setSent] = useState(false)
+  const eventsTrackRef = useRef<HTMLDivElement>(null)
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    setSent(true)
+  function scrollEvents(direction: -1 | 1) {
+    const track = eventsTrackRef.current
+    if (!track) return
+    const amount = Math.min(track.clientWidth * 0.78, 360)
+    track.scrollBy({ left: direction * amount, behavior: 'smooth' })
   }
 
   return (
     <section className="connect" id="connect">
-      <div className="connect__intro">
-        <p className="connect__eyebrow">Get Connected</p>
-        <h2 className="connect__title">Ready to get in the game?</h2>
-        <p className="connect__copy">
-          Tell us what you’re interested in — a team leader will follow up with you personally.
-          Whether you compete or just love to play, there’s a place for you at {brand.name} in{' '}
-          {brand.location}.
-        </p>
-      </div>
-
-      <div className="connect__channels">
-        {connectChannels.map((channel) => (
-          <a className="connect__channel" key={channel.title} href={channel.href}>
-            <h3>{channel.title}</h3>
-            <p>{channel.detail}</p>
-            <span className="text-link">{channel.action}</span>
-          </a>
-        ))}
-      </div>
-
-      <div className="connect__panel" id="connect-form">
-        <div>
-          <h3 className="connect__form-title">Contact form</h3>
+      <div className="connect__inner">
+        <div className="connect__intro">
+          <p className="connect__eyebrow">Get Connected</p>
+          <h2 className="connect__title">Ready to get in the game?</h2>
           <p className="connect__copy">
-            Drop your info and how you want to plug in. We’ll get back to you.
+            Train with us, shadow the ministry, or serve on the team — a leader will follow up
+            personally. Whether you compete or just love to play, there’s a place for you at{' '}
+            {brand.name} in {brand.location}.
           </p>
         </div>
-        {sent ? (
-          <p className="connect__success">You’re in. We’ll reach out soon — keep showing up.</p>
-        ) : (
-          <form className="connect__form" onSubmit={handleSubmit}>
-            <input name="name" type="text" placeholder="Full name" required />
-            <input name="email" type="email" placeholder="Email" required />
-            <select name="interest" defaultValue="" required>
-              <option value="" disabled>
-                I’m interested in…
-              </option>
-              <option>Athlete mentorship</option>
-              <option>Heavenly culture curriculum</option>
-              <option>Bible studies / coaching</option>
-              <option>Joining trainings / sports days</option>
-              <option>Outreach & partnerships</option>
-              <option>Serving on the team</option>
-            </select>
-            <textarea name="message" placeholder="Anything we should know?" />
-            <button className="btn btn--dark" type="submit">
-              Send it
-            </button>
-          </form>
-        )}
+
+        <div className="connect__paths">
+          {involve.map((item, index) => (
+            <Link className="connect__path" to={item.href} key={item.title}>
+              <span className="connect__path-index" aria-hidden="true">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <span className="connect__path-copy">
+                <span className="connect__path-title">{item.title}</span>
+                <span className="connect__path-body">{item.body}</span>
+              </span>
+              <span className="connect__path-cta">{item.action}</span>
+            </Link>
+          ))}
+        </div>
+
+        <div className="connect__events" id="events">
+          <div className="connect__events-head">
+            <div>
+              <h3 className="connect__events-title">Upcoming events</h3>
+              <p className="connect__events-subtitle">
+                Sports days, trainings, and fellowships — show up once and you’ll feel the energy.
+              </p>
+            </div>
+            <div className="rail__arrows">
+              <button
+                type="button"
+                className="rail__arrow"
+                aria-label="Previous events"
+                onClick={() => scrollEvents(-1)}
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                className="rail__arrow"
+                aria-label="Next events"
+                onClick={() => scrollEvents(1)}
+              >
+                ›
+              </button>
+            </div>
+          </div>
+          <div className="connect__events-track" ref={eventsTrackRef}>
+            {events.map((event) => (
+              <article className="event-card" key={event.title}>
+                <div className="event-card__meta">
+                  <span className="event-card__date">{event.date}</span>
+                  <span className="event-card__tag">{event.tag}</span>
+                </div>
+                <h3>{event.title}</h3>
+                <p>{event.detail}</p>
+                <Link className="text-link" to="/connect#connect-form">
+                  Register interest
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link, NavLink } from 'react-router-dom'
 import { brand, navLinks } from '../../data/content'
 
 export default function Nav() {
@@ -15,26 +16,26 @@ export default function Nav() {
   return (
     <header className={`site-nav${scrolled ? ' is-scrolled' : ''}`}>
       <div className="site-nav__inner">
-        <a className="site-nav__brand" href="#top" aria-label={`${brand.name} home`}>
+        <Link className="site-nav__brand" to="/" aria-label={`${brand.name} home`}>
           <img
             className="site-nav__mark"
             src="/images/brand/ciaa-nav.png"
             alt={`${brand.name} logo`}
           />
-        </a>
+        </Link>
 
         <nav className="site-nav__links" aria-label="Primary">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href}>
+            <NavLink key={link.href} to={link.href}>
               {link.label}
-            </a>
+            </NavLink>
           ))}
         </nav>
 
         <div className="site-nav__end">
-          <a className="site-nav__cta" href="#connect">
+          <Link className="site-nav__cta" to="/connect">
             Join
-          </a>
+          </Link>
           <button
             type="button"
             className="site-nav__menu"
@@ -51,13 +52,13 @@ export default function Nav() {
       {open ? (
         <div className="site-nav__drawer">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} onClick={() => setOpen(false)}>
+            <NavLink key={link.href} to={link.href} onClick={() => setOpen(false)}>
               {link.label}
-            </a>
+            </NavLink>
           ))}
-          <a className="site-nav__cta" href="#connect" onClick={() => setOpen(false)}>
+          <Link className="site-nav__cta" to="/connect" onClick={() => setOpen(false)}>
             Join the movement
-          </a>
+          </Link>
         </div>
       ) : null}
     </header>

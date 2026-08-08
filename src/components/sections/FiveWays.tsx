@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { fiveWays } from '../../data/content'
 
 export default function FiveWays() {
@@ -25,9 +26,9 @@ export default function FiveWays() {
             </li>
           ))}
         </ol>
-        <a className="text-link five-ways__cta" href="#connect">
+        <Link className="text-link five-ways__cta" to="/connect">
           Get connected
-        </a>
+        </Link>
       </div>
     </section>
   )

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { brand, mission } from '../../data/content'
 
 export default function Mission() {
@@ -12,16 +13,16 @@ export default function Mission() {
           <p className="who__lead">{mission.problem}</p>
           <p className="who__body">{mission.solution}</p>
           <div className="who__actions">
-            <a className="text-link" href="#programs">
+            <Link className="text-link" to="/programs">
               Learn more
-            </a>
-            <a className="text-link" href="#connect">
+            </Link>
+            <Link className="text-link" to="/connect">
               Get involved
-            </a>
+            </Link>
           </div>
         </div>
-        <figure className="who__media">
-          <img src="/images/programs/mentorship.jpg" alt="CIAA mentorship and training" />
+        <figure className="who__media who__media--logo">
+          <img src="/images/brand/ciaa-logo.png" alt={`${brand.name} logo`} />
         </figure>
       </div>
     </section>

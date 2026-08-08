@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { heroSlides } from '../../data/content'
 
 export default function Hero() {
@@ -25,33 +26,27 @@ export default function Hero() {
           className={`hero__slide${i === index ? ' is-active' : ''}`}
           aria-hidden={i !== index}
         >
-          <img src={item.image} alt="" />
+          <img
+            src={item.image}
+            alt=""
+            style={item.imagePosition ? { objectPosition: item.imagePosition } : undefined}
+          />
           <div className="hero__shade" />
         </div>
       ))}
 
       <div className="hero__content" key={slide.id}>
-        {slide.title === 'CIAA' ? (
-          <img
-            className="hero__logo"
-            src="/images/brand/ciaa-logo-hero.png"
-            alt="CIAA"
-          />
-        ) : (
-          <>
-            {slide.eyebrow ? <p className="hero__eyebrow">{slide.eyebrow}</p> : null}
-            <p className="hero__brand">{slide.title}</p>
-          </>
-        )}
+        <p className="hero__eyebrow">{slide.eyebrow}</p>
+        <p className="hero__brand">{slide.title}</p>
         <h1 className="hero__headline">{slide.headline}</h1>
         <p className="hero__support">{slide.support}</p>
         <div className="hero__actions">
-          <a className="btn btn--light" href={slide.primary.href}>
+          <Link className="btn btn--light" to={slide.primary.href}>
             {slide.primary.label}
-          </a>
-          <a className="btn btn--ghost" href={slide.secondary.href}>
+          </Link>
+          <Link className="btn btn--ghost" to={slide.secondary.href}>
             {slide.secondary.label}
-          </a>
+          </Link>
         </div>
       </div>
 
