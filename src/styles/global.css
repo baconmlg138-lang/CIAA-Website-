@@ -559,8 +559,8 @@ button {
   padding: clamp(1.25rem, 3vw, 2rem);
   overflow: hidden;
   aspect-ratio: 1 / 1.1;
-  background: #0b0b0b;
-  border: 1px solid #1a1a1a;
+  background: var(--white);
+  border: 1px solid var(--line);
 }
 
 .who__media--logo img {
