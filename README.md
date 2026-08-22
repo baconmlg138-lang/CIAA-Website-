@@ -37,6 +37,20 @@ npm install
 npm run dev
 ```
 
+## Deploy (GitHub Pages + cisports.org)
+
+The site deploys automatically on every push to `main` via `.github/workflows/deploy.yml`.
+
+1. Repo → **Settings → Pages** → Source: **GitHub Actions**
+2. Repo → **Settings → Secrets and variables → Actions** → add:
+   - `VITE_CONTACT_FORM_URL`
+   - `VITE_CONTACT_FORM_SECRET`
+   (same values as your local `.env`)
+3. Push to `main` (or run the workflow manually under **Actions**)
+4. Custom domain `cisports.org` is set via `public/CNAME`
+
+Live site: https://cisports.org
+
 ## Contact form → Google Sheet
 
 Submissions are written to a **private** Google Sheet through an Apps Script web app. The spreadsheet itself is never public.
