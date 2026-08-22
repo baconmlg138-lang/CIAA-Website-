@@ -559,14 +559,14 @@ button {
   padding: clamp(1.25rem, 3vw, 2rem);
   overflow: hidden;
   aspect-ratio: 1 / 1.1;
-  background: #e6e8ec;
-  border: 1px solid #d2d6de;
+  background: #0b0b0b;
+  border: 1px solid #1a1a1a;
 }
 
 .who__media--logo img {
-  width: min(78%, 280px);
+  width: min(82%, 300px);
   height: auto;
-  max-height: 100%;
+  max-height: 92%;
   object-fit: contain;
   object-position: center;
 }

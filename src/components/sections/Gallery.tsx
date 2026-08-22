@@ -9,6 +9,7 @@ export default function Gallery() {
       subtitle="From the field to the huddle — this is what it looks like when athletes chase more."
       learnMoreHref="/connect"
       viewAllHref="/connect"
+      autoPlay
     >
       {gallery.map((item) => (
         <figure className="story-card" key={item.src}>
